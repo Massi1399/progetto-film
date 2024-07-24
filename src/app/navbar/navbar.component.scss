@@ -1,0 +1,100 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+$navbar-padding-y:                  $spacer * .5;
+$navbar-padding-x:                  null;
+
+$navbar-nav-link-padding-x:         .5rem;
+
+$navbar-brand-font-size:            $font-size-lg;
+// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
+$nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2;
+$navbar-brand-height:               $navbar-brand-font-size * $line-height-base;
+$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) * .5;
+$navbar-brand-margin-end:           1rem;
+
+$navbar-toggler-padding-y:          .25rem;
+$navbar-toggler-padding-x:          .75rem;
+$navbar-toggler-font-size:          $font-size-lg;
+$navbar-toggler-border-radius:      $btn-border-radius;
+$navbar-toggler-focus-width:        $btn-focus-width;
+$navbar-toggler-transition:         box-shadow .15s ease-in-out;
+
+$navbar-light-color:                rgba(var(--#{$prefix}emphasis-color-rgb), .65);
+$navbar-light-hover-color:          rgba(var(--#{$prefix}emphasis-color-rgb), .8);
+$navbar-light-active-color:         rgba(var(--#{$prefix}emphasis-color-rgb), 1);
+$navbar-light-disabled-color:       rgba(var(--#{$prefix}emphasis-color-rgb), .3);
+$navbar-light-icon-color:           rgba($body-color, .75);
+$navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-icon-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+$navbar-light-toggler-border-color: rgba(var(--#{$prefix}emphasis-color-rgb), .15);
+$navbar-light-brand-color:          $navbar-light-active-color;
+$navbar-light-brand-hover-color:    $navbar-light-active-color;
+
+// Generate series of `.navbar-expand-*` responsive classes for configuring
+// where your navbar collapses.
+.navbar-expand {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+      $next: breakpoint-next($breakpoint, $grid-breakpoints);
+      $infix: breakpoint-infix($next, $grid-breakpoints);
+  
+      // stylelint-disable-next-line scss/selector-no-union-class-name
+      &#{$infix} {
+        @include media-breakpoint-up($next) {
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+  
+          .navbar-nav {
+            flex-direction: row;
+  
+            .dropdown-menu {
+              position: absolute;
+            }
+  
+            .nav-link {
+              padding-right: var(--#{$prefix}navbar-nav-link-padding-x);
+              padding-left: var(--#{$prefix}navbar-nav-link-padding-x);
+            }
+          }
+  
+          .navbar-nav-scroll {
+            overflow: visible;
+          }
+  
+          .navbar-collapse {
+            display: flex !important; // stylelint-disable-line declaration-no-important
+            flex-basis: auto;
+          }
+  
+          .navbar-toggler {
+            display: none;
+          }
+  
+          .offcanvas {
+            // stylelint-disable declaration-no-important
+            position: static;
+            z-index: auto;
+            flex-grow: 1;
+            width: auto !important;
+            height: auto !important;
+            visibility: visible !important;
+            background-color: transparent !important;
+            border: 0 !important;
+            transform: none !important;
+            @include box-shadow(none);
+            @include transition(none);
+            // stylelint-enable declaration-no-important
+  
+            .offcanvas-header {
+              display: none;
+            }
+  
+            .offcanvas-body {
+              display: flex;
+              flex-grow: 0;
+              padding: 0;
+              overflow-y: visible;
+            }
+          }
+        }
+      }
+    }
+  }
