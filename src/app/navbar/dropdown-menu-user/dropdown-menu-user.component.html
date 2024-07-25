@@ -1,0 +1,32 @@
+  <div class="profile_icon">
+    <button class="text-white dropdown-toggle" mat-icon-button [matMenuTriggerFor]="menu" aria-label="user menu">
+        <mat-icon >account_circle</mat-icon>
+    </button>
+  </div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>person_edit</mat-icon>
+      <span>Il mio profilo</span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>wysiwyg</mat-icon>
+        <span>Le mie recensioni</span>
+      </button>
+    @if(isEditor){
+        <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Sezione Editor</span>
+          </button> 
+    }
+    @if(isAdmin){
+        <button mat-menu-item>
+            <mat-icon>admin_panel_settings</mat-icon>
+            <span>Sezione Admin</span>
+          </button> 
+    }
+    <button mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>Esci</span>
+    </button>
+  </mat-menu>
+  
