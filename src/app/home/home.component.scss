@@ -1,0 +1,19 @@
+.home {
+    height: 100%;
+    background: linear-gradient(140deg, #e7e7e7, #3b3b3b, #9c9c9c);
+    background-size: 600% 600%;
+
+    -webkit-animation: GradientBackGround 6s ease infinite;
+    animation: GradientBackGround 6s ease infinite;
+}
+
+@-webkit-keyframes GradientBackGround {
+    0%{background-position:0% 14%}
+    50%{background-position:100% 87%}
+    100%{background-position:0% 14%}
+}
+@keyframes GradientBackGround {
+    0%{background-position:0% 14%}
+    50%{background-position:100% 87%}
+    100%{background-position:0% 14%}
+}

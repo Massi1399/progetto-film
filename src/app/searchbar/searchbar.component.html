@@ -1,0 +1,28 @@
+<div class="container text-center">
+    <div class="row row-cols-1 row-cols-sm2">
+        <div class="col">
+            <mat-form-field class="search-field">
+                <mat-label>Cerca</mat-label>
+                <input matInput type="text" [(ngModel)]="inputValue">
+                @if (inputValue) {
+                  <button matSuffix mat-icon-button aria-label="Cancella" (click)="inputValue=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                }
+              </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field>
+              <mat-label>Applica un filtro</mat-label>
+              <mat-select [(value)]="selectedOption">
+                <mat-option></mat-option>
+                @for (option of options; track option) {
+                  <mat-option [value]="option.value">{{ option.value }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <p>Hai scelto: {{selectedOption}}</p>
+        </div>
+    </div>
+</div>
+
