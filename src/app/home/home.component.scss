@@ -7,6 +7,18 @@
     animation: GradientBackGround 6s ease infinite;
 }
 
+.home-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10%;
+    height: 100%;
+}
+
+.row-3{
+    padding-top: 10%;
+}
+
 @-webkit-keyframes GradientBackGround {
     0%{background-position:0% 14%}
     50%{background-position:100% 87%}

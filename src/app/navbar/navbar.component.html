@@ -12,23 +12,20 @@
         ProgettoFilm
       </a>
     </div>
-    <div class="collapse navbar-collapse me-lg-2 mb-lg-3" id="navbarsExample11">
-      <ul class="navbar-nav col justify-content-lg-center">
-         <li class="nav-item dropdown text">
-          <br>
+    <div class="collapse navbar-collapse" id="navbarsExample11">
+      <div class="navbar-nav col-11 align-items-center justify-content-lg-center">
+         <div class="nav-item dropdown text">
           <navbar-dropdown-menu-catalog > </navbar-dropdown-menu-catalog>
-        </li>
-        @if(isHomepage){
-        <li class="nav-item " style="margin-left: 1vw;">
-          <br>
-          <form class="col-lg" role="search">
-            <input type="search" class="form-control form-control-dark " placeholder="Cerca qui un titolo" aria-label="Search">
-          </form>
-        </li>
-        }  
-      </ul>
+         </div>
+        @if(!isHomepage){
+            <div class="searchbar">
+              <searchbar></searchbar>
 
-      <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+            </div>
+        }  
+      </div>
+
+      <div class="d-lg-flex col justify-content-lg-end">
         @if(isLogged){
           <navbar-dropdown-menu-user ></navbar-dropdown-menu-user>
         }  

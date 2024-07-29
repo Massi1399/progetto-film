@@ -2,11 +2,12 @@ import { Component, Inject, Output, EventEmitter, OnInit  } from '@angular/core'
 import { DropdownMenuUserComponent } from "./dropdown-menu-user/dropdown-menu-user.component";
 import { DropdownMenuCatalogComponent } from "./dropdown-menu-catalog/dropdown-menu-catalog.component";
 import { Router, NavigationEnd } from '@angular/router';
+import { SearchbarComponent } from "../searchbar/searchbar.component";
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [DropdownMenuCatalogComponent, DropdownMenuUserComponent],
+  imports: [DropdownMenuCatalogComponent, DropdownMenuUserComponent, SearchbarComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })

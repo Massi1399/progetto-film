@@ -1,19 +1,20 @@
-<div class="container text-center">
-    <div class="row row-cols-1 row-cols-sm2">
-        <div class="col">
-            <mat-form-field class="search-field">
-                <mat-label>Cerca</mat-label>
-                <input matInput type="text" [(ngModel)]="inputValue">
-                @if (inputValue) {
-                  <button matSuffix mat-icon-button aria-label="Cancella" (click)="inputValue=''">
-                    <mat-icon>close</mat-icon>
-                  </button>
-                }
-              </mat-form-field>
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-7">
+                  <mat-form-field class="search-field">
+                      <mat-label>Cerca</mat-label>
+                      <input matInput type="text" [(ngModel)]="inputValue">
+                      @if (inputValue) {
+                        <button matSuffix mat-icon-button aria-label="Cancella" (click)="inputValue=''">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      }
+                    </mat-form-field>
         </div>
-        <div class="col">
-            <mat-form-field>
-              <mat-label>Applica un filtro</mat-label>
+
+        <div class="col-3">
+            <mat-form-field class="filter">
+              <mat-label>Filtra per</mat-label>
               <mat-select [(value)]="selectedOption">
                 <mat-option></mat-option>
                 @for (option of options; track option) {
@@ -21,8 +22,14 @@
                 }
               </mat-select>
             </mat-form-field>
-            <p>Hai scelto: {{selectedOption}}</p>
         </div>
-    </div>
+
+        <div class="col-1">
+          <button class="search-button" mat-fab color="secondary" aria-label="search-button">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>  
+        
+    </div>               
 </div>
 
