@@ -20,11 +20,11 @@ export class AuthService {
   }
 
   public get currentUserValue(): any {
-    return this.currentUserSubject.value;
+    return false;
   }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, { username, password })
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, { email, password })
       .pipe(map(user => {
         // Store user details and jwt token in local storage to keep user logged in
         sessionStorage.setItem('currentUser', JSON.stringify(user));
@@ -33,8 +33,8 @@ export class AuthService {
       }));
   }
 
-  register(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/register`, { username, password });
+  register(name: string, surname: string, email: string, password: string, confirm: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/registration`, { name, surname, email, password });
   }
 
   logout(): void {
