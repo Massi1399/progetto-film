@@ -99,6 +99,10 @@ $navbar-light-brand-hover-color:    $navbar-light-active-color;
     }
   }
 
+  header{
+    position: sticky;
+  }
+
   .searchbar {
     width: 100%;
     transform: scale(0.8);

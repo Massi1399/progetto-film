@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { RegistrationComponent } from './registration/registration.component';
-import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './main/registration/registration.component';
+import { LoginComponent } from './main/login/login.component';
 import { CatalogComponent } from './catalog/catalog.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './main/home/home.component';
 import { authorizationGuard } from './authorization-guard.service';
 import { inject } from '@angular/core';
 
