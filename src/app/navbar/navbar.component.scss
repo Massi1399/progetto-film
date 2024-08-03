@@ -103,13 +103,18 @@ $navbar-light-brand-hover-color:    $navbar-light-active-color;
     position: sticky;
   }
 
+  #searchbar{
+    align-self: start;
+  }
+
   .searchbar {
     width: 100%;
-    transform: scale(0.8);
-    margin-top: 2%;
+    transform: scale(0.9);
+    margin-left:-5%;
+    margin-top: 2.5%;
   }
  
-  .navbar-nav .nav-item {
+  .navbar-nav {
     display: flex;
     align-items: center;
     margin-left: 5%;

@@ -1,6 +1,6 @@
 <button class="text-white dropdown-toggle" mat-button [matMenuTriggerFor]="menu"><span>Catalogo</span></button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>Vedi Tutto</button>
+  <button mat-menu-item (click)="redirectToCatalog('all')">Vedi Tutto</button>
   <button mat-menu-item>Disney</button>
   <button mat-menu-item>Sony</button>
   <button mat-menu-item>Ghibli</button>

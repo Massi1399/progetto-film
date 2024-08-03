@@ -19,8 +19,8 @@
             <navbar-dropdown-menu-catalog></navbar-dropdown-menu-catalog>
           </li>
           @if(!isHomepage){
-            <li class="nav-item flex-grow-1 my-3 my-lg-0 mx-lg-3">
-              <div class="searchbar w-100">
+            <li id="searchbar" class="nav-item flex-grow-1 my-3 my-lg-0 mx-lg-3">
+              <div class="searchbar">
                 <searchbar></searchbar>
               </div>
             </li>
@@ -30,8 +30,8 @@
               <navbar-dropdown-menu-user></navbar-dropdown-menu-user>
             }
             @else{
-              <button type="button" class="btn btn-outline-light me-2">Accedi</button>
-              <button type="button" class="btn btn-warning">Registrati</button>
+              <button type="button" class="btn btn-outline-light me-2" (click)="redirectToLogin()">Accedi</button>
+              <button type="button" class="btn btn-warning" (click)="redirectToRegistration()">Registrati</button>
             }
           </li>
         </ul>

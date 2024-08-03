@@ -1,11 +1,12 @@
 import {Component, Input} from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
+/*import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {merge} from 'rxjs';
+import {merge} from 'rxjs';*/
+import {FormControl, Validators,FormGroup ,FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 
 @Component({
@@ -13,10 +14,14 @@ import {merge} from 'rxjs';
   templateUrl: './passwordfield.component.html',
   styleUrl: './passwordfield.component.scss',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
 })
 export class PasswordFieldComponent {
-  @Input() hint = '';
+  
+  @Input()
+  parentForm!: FormGroup;
+
+  /*@Input() hint = '';
   @Input() label ='';
 
   hide = true;
@@ -31,6 +36,7 @@ export class PasswordFieldComponent {
       .subscribe(() => this.updateErrorMessage());
   }
 
+  
   updateErrorMessage() {
     if (this.password.hasError('required') ) {
       this.passwordErrorMessage = 'Devi inserire una password!';
@@ -50,6 +56,6 @@ export class PasswordFieldComponent {
       this.passwordErrorMessage = '';
       this.confirmPasswordErrorMessage = '';
     }
-  }
+  }*/
 
 }

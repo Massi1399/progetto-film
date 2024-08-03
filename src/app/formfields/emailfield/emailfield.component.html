@@ -1,4 +1,4 @@
-<mat-form-field>
+ <!--<mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput
            [formControl]="email"
@@ -8,3 +8,20 @@
       <mat-error>{{errorMessage}}</mat-error>
     }
   </mat-form-field>
+-->
+<div [formGroup]="parentForm" class="col-md-12">
+    <label for="email" class="form-label">Email</label>
+    <input id="email" type="email" formControlName="email" class="form-control" [class.is-invalid]="parentForm.get('email')?.invalid && parentForm.get('email')?.touched">
+    @if(parentForm.get('email')?.errors?.['required']){
+      <div class="invalid-feedback">
+        Per favore inserisci una email.
+      </div>
+    }  
+    @else if(parentForm.get('email')?.invalid && parentForm.get('email')?.touched){
+        <div class="invalid-feedback">
+          Per favore inserisci una email valida.
+        </div>
+    }
+  
+</div>
+  

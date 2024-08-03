@@ -12,9 +12,8 @@ import { SearchbarComponent } from "../searchbar/searchbar.component";
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
-  isLogged = true; // Variable to check if the user is logged in
+  isLogged = false; // Variable to check if the user is logged in
   isHomepage: boolean = true; // Variable to check if the current page is the homepage
-  isMenuCollapsed: boolean = true;
  
   constructor(private router: Router) {}
 
@@ -25,8 +24,12 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
-  
-  toggleMenu() {
-    this.isMenuCollapsed = !this.isMenuCollapsed;
+
+  redirectToRegistration() {
+    this.router.navigate(['/registration']);
+  }
+
+  redirectToLogin() {
+    this.router.navigate(['/login']);
   }
 }

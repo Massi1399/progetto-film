@@ -1,0 +1,14 @@
+<div [formGroup]="parentForm" class="col-md-6">
+    <label for="surname" class="form-label">Cognome</label>
+      <input id="surname" type="text" formControlName="surname" class="form-control" [class.is-invalid]="parentForm.get('surname')?.invalid && parentForm.get('surname')?.touched">
+      @if(parentForm.get('surname')?.errors?.['required']){
+        <div class="invalid-feedback">
+          Per favore inserisci un cognome.
+        </div>
+      }  
+      @else if(parentForm.get('surname')?.invalid && parentForm.get('surname')?.touched){
+          <div class="invalid-feedback">
+            Per favore inserisci un cognome valido.
+          </div>
+        } 
+</div>

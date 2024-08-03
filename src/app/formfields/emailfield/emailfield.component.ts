@@ -1,9 +1,11 @@
-import {Component} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Component, Input} from '@angular/core';
+/*import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {merge} from 'rxjs';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {merge} from 'rxjs';
+*/
+import {FormsModule, ReactiveFormsModule, FormGroup} from '@angular/forms';
+
 
 /** @title Email field with hints */
 @Component({
@@ -11,11 +13,14 @@ import {merge} from 'rxjs';
   templateUrl: './emailfield.component.html',
   styleUrl: './emailfield.component.scss',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
 })
 export class EmailFieldComponent {
-  email = new FormControl('', [Validators.required, Validators.email]);
+  @Input()
+  parentForm!: FormGroup;
 
+  /*email = new FormControl('', [Validators.required, Validators.email]);
+  
   errorMessage = '';
 
   constructor() {
@@ -32,5 +37,5 @@ export class EmailFieldComponent {
     } else {
       this.errorMessage = '';
     }
-  }
+  }*/
 }
