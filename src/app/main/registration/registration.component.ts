@@ -16,7 +16,7 @@ import {MatFormFieldControl, MatFormFieldModule} from '@angular/material/form-fi
   standalone: true,
   imports: [NameFieldComponent, SurnameFieldComponent, EmailFieldComponent, PasswordFieldComponent, ConfirmfieldComponent, FormsModule,
     MatFormFieldModule, ReactiveFormsModule, MatInputModule,],
-  providers: [{provide: MatFormFieldControl, useExisting: RegistrationComponent}],
+  //providers: [{provide: MatFormFieldControl, useExisting: RegistrationComponent}],
 })
 
 export class RegistrationComponent {
@@ -29,10 +29,10 @@ export class RegistrationComponent {
 
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
-      name: ['', [Validators.required]],
-      surname: ['', [Validators.required]],
+      name: ['', [Validators.required, this.regexValidator(/^[a-zA-Z]+$/) ]],
+      surname: ['', [Validators.required, this.regexValidator(/^[a-zA-Z]+$/) ]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(8), this.regexValidator(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/) ]],
       confirmPassword: ['', [Validators.required, this.matchValues('password')]]
     });
   }
@@ -50,11 +50,20 @@ export class RegistrationComponent {
     };
   }
 
-  
+  regexValidator(pattern: RegExp): (control: AbstractControl) => { [key: string]: boolean } | null {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+      if (!control.value) {
+        return null;
+      }
+      const valid = pattern.test(control.value);
+      return valid ? null : { regexInvalid: true };
+    };
+  }
+
   onSubmit(): void {
     if (this.registrationForm.valid) {
       console.log(this.registrationForm.value);
-      // Logica di registrazione
+      // backend logic
     }
   }
 }
