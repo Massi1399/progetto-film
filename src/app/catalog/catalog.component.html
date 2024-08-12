@@ -1,5 +1,12 @@
-<div class="catalog">
-    <div class="container">
-        <p>catalog works!</p>
+<div class="catalog-container">
+    <input type="text" [formControl]="filter" placeholder="Search for a movie..." />
+    <div class="catalog">
+      <div class="catalog-item" *ngFor="let movie of movies">
+            <img [src]="movie.imageUrl" alt="{{ movie.title }}">
+            <h2>{{ movie.title }}</h2>
+            <p>{{ movie.description }}</p>
+            <p class="rating">Rating: {{ movie.rating }}</p>
+          </div>
     </div>
 </div>
+  

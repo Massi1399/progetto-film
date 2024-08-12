@@ -1,0 +1,26 @@
+form > div{
+    margin-bottom: 1%;
+    margin-top:5%;
+}
+
+form{
+    display: flex;
+}
+
+.container{
+    background-color: white;
+    padding:5vh;
+    border-radius: 10px;
+}
+
+.login{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(140deg, #e7e7e7, #3b3b3b, #9c9c9c);
+    background-size: 600% 600%;
+
+    -webkit-animation: GradientBackGround 6s ease infinite;
+    animation: GradientBackGround 6s ease infinite;
+}

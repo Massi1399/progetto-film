@@ -1,6 +1,6 @@
 <div [formGroup]="parentForm" class="col-md-6">
     <label for="name" class="form-label">Nome</label>
-      <input ngModel pattern="[a-zA-Z ]*" id="name" type="text" formControlName="name" class="form-control" [class.is-invalid]="parentForm.get('name')?.invalid && parentForm.get('name')?.touched">
+      <input id="name" type="text" formControlName="name" class="form-control" [class.is-invalid]="parentForm.get('name')?.invalid && parentForm.get('name')?.touched">
       @if(parentForm.get('name')?.errors?.['required']){
         <div class="invalid-feedback">
           Per favore inserisci un nome.

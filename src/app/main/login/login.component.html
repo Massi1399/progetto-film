@@ -1,8 +1,9 @@
 <div class="login">
-    <div class="container">
-        <form class="row g-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="container w-50">
+        <div class="container">
+            <form class="row g-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <email-field [parentForm]="loginForm"></email-field>
-           <password-field [parentForm]="loginForm"></password-field>
+            <password-field [parentForm]="loginForm"></password-field>
           <!--<div class="col-12">
             <div class="form-check">
               <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
@@ -17,5 +18,7 @@
           <div class="col-12">
             <button class="btn btn-primary" type="submit" [disabled]="loginForm.invalid">Accedi</button>
           </div>
-        </form>    </div>
+        </form>
+        </div>
+    </div>
 </div>

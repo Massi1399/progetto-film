@@ -2,3 +2,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+
+
+@-webkit-keyframes GradientBackGround {
+    0%{background-position:0% 14%}
+    50%{background-position:100% 87%}
+    100%{background-position:0% 14%}
+}
+@keyframes GradientBackGround {
+    0%{background-position:0% 14%}
+    50%{background-position:100% 87%}
+    100%{background-position:0% 14%}
+}

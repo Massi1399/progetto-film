@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "title": "Inception",
+      "description": "A thief who steals corporate secrets through the use of dream-sharing technology.",
+      "rating": 8.8,
+      "imageUrl": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "title": "The Matrix",
+      "description": "A computer hacker learns from mysterious rebels about the true nature of his reality.",
+      "rating": 8.7,
+      "imageUrl": "https://via.placeholder.com/150"
+    }
+  ]
+  
