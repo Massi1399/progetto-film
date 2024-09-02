@@ -6,7 +6,7 @@ import {ConfirmfieldComponent} from '../../formfields/confirmfield/confirmfield.
 import { PasswordFieldComponent } from '../../formfields/passwordfield/passwordfield.component';
 import {FormBuilder, FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, AbstractControl} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldControl, MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @Component({

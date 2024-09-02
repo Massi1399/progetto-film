@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { RetrievemoviesService } from '../retrievemovies.service';
 import { FormControl , ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -10,6 +10,11 @@ interface Movie {
   description: string;
   rating: number;
   imageUrl: string;
+  productionYear: number;
+  productionCompany: string;
+  genre: string;
+  duration: number;
+  director: string;
 }
 
 @Component({
@@ -22,24 +27,22 @@ interface Movie {
 export class CatalogComponent implements OnInit {
 
   movies: Movie[] = [];
-  filter: FormControl = new FormControl('');
+  @Input() filterText: string = '';
+  @Input() filterType: string = '';
 
   constructor(private movieService: RetrievemoviesService) { }
 
   ngOnInit(): void {
-    this.filter.valueChanges.pipe(
-      debounceTime(300),
-      distinctUntilChanged()
-    ).subscribe(value => {
-      this.getMovies(value);
-    });
-
-    // Initial fetch with empty filter
-    this.getMovies();
+    // Fetch movies with initial filterText and filterType
+    this.getMovies(this.filterText, this.filterType);
   }
 
-  getMovies(filter: string = ''): void {
-    this.movieService.getMovies(filter).subscribe(data => {
+  getMovies(filterText: string = '', filterType: string = ''): void {
+    this.movieService.getMovies(filterText, filterType).subscribe(data => {
+      if (data.length === 0) {
+        this.movies = [];
+        return;
+      }
       this.movies = data;
     });
   }

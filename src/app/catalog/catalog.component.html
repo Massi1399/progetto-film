@@ -1,12 +1,47 @@
-<div class="catalog-container">
-    <input type="text" [formControl]="filter" placeholder="Search for a movie..." />
-    <div class="catalog">
-      <div class="catalog-item" *ngFor="let movie of movies">
-            <img [src]="movie.imageUrl" alt="{{ movie.title }}">
-            <h2>{{ movie.title }}</h2>
-            <p>{{ movie.description }}</p>
-            <p class="rating">Rating: {{ movie.rating }}</p>
-          </div>
+<div class="catalog">
+  <div class="container w-70">
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Locandina</th>
+            <th scope="col">Titolo</th>
+            <th scope="col">Descrizione</th>
+            <th scope="col">Regista</th>
+            <th scope="col">Casa di Produzione</th>
+            <th scope="col">Anno di Produzione</th>
+            <th scope="col">Genere</th>
+            <th scope="col">Durata</th>
+            <th scope="col">Valutazione</th>
+            <!--<th scope="col">Actions</th>-->
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let movie of movies">
+            @if(movies.length === 0) {
+              <tr>
+                <td colspan="9">Nessun film trovato!</td>
+              </tr>
+            }
+            <tr>
+              <td><img [src]="movie.imageUrl" alt="{{ movie.title }}" class="img-thumbnail" style="width: 100px;"></td>
+              <td>{{ movie.title }}</td>
+              <td>{{ movie.description }}</td>
+              <td>{{ movie.director }}</td>
+              <td>{{ movie.productionCompany }}</td>
+              <td>{{ movie.productionYear }}</td>
+              <td>{{ movie.genre }}</td>
+              <td>{{ movie.duration }}</td>
+              <td>{{ movie.rating }}</td>
+              <!--<td>
+                <button class="btn btn-primary btn-sm" (click)="editMovie(movie)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteMovie(movie)">Delete</button>
+              </td>-->
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
   

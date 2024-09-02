@@ -5,8 +5,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Router, NavigationEnd } from '@angular/router';
+import { CatalogComponent } from '../catalog/catalog.component';
+import { routes } from '../app.routes';
 
 interface Option {
+  name: string;
   value: string;
 }
 
@@ -22,16 +26,20 @@ interface Option {
 })
 export class SearchbarComponent {
   options: Option[] = [
-    {value: 'Titolo'},
-    {value: 'Genere'},
-    {value: 'Regista'},
-    {value: 'Anno'},
+    {name: 'Titolo' , value: 'title'},
+    {name: 'Genere' ,value: 'genre'},
+    {name: 'Regista', value: 'director'},
+    {name: 'Anno', value: 'productionYear'},
 
   ];
-  selectedOption = this.options[0].value; // Default value Titolo 
+  selectedOption = this.options[0].value; // Default value 
+
+  constructor(private router : Router) {}
+
+  retrieveMovies(filterText: string , filterType : string) {
+    this.router.navigate(['/catalog', {filterText: filterText, filterType: filterType}]);
+  }
 
   inputValue = "";
-  /*selectCar(event: Event) {
-    this.selectedCar = (event.target as HTMLSelectElement).value;
-  }*/
+  
 }

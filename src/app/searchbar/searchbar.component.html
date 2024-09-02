@@ -18,14 +18,14 @@
               <mat-select [(value)]="selectedOption">
                 <mat-option></mat-option>
                 @for (option of options; track option) {
-                  <mat-option [value]="option.value">{{ option.value }}</mat-option>
+                  <mat-option [value]="option.value">{{ option.name }}</mat-option>
                 }
               </mat-select>
             </mat-form-field>
         </div>
 
         <div class="col-1">
-          <button class="search-button" mat-fab color="secondary" aria-label="search-button">
+          <button class="search-button" mat-fab color="secondary" aria-label="search-button" (click)="retrieveMovies(inputValue, selectedOption)" >
             <mat-icon>search</mat-icon>
           </button>
         </div>  

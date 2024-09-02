@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Inception",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology.",
+    "rating": 8.8,
+    "imageUrl": "https://via.placeholder.com/150",
+    "productionCompany": "Warner Bros.",
+    "director": "Christopher Nolan",
+    "duration": 148,
+    "productionYear": 2010,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 2,
+    "title": "The Matrix",
+    "description": "A computer hacker learns from mysterious rebels about the true nature of his reality.",
+    "rating": 8.7,
+    "imageUrl": "https://via.placeholder.com/150",
+    "productionCompany": "Warner Bros.",
+    "director": "Lana Wachowski, Lilly Wachowski",
+    "duration": 136,
+    "productionYear": 1999,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 3,
+    "title": "Interstellar",
+    "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "rating": 8.6,
+    "imageUrl": "https://via.placeholder.com/150",
+    "productionCompany": "Paramount Pictures",
+    "director": "Christopher Nolan",
+    "duration": 169,
+    "productionYear": 2014,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 4,
+    "title": "The Dark Knight",
+    "description": "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
+    "rating": 9.0,
+    "imageUrl": "https://via.placeholder.com/150",
+    "productionCompany": "Warner Bros.",
+    "director": "Christopher Nolan",
+    "duration": 152,
+    "productionYear": 2008,
+    "genre": "Action"
+  }
+]
