@@ -13,16 +13,17 @@
             <th scope="col">Genere</th>
             <th scope="col">Durata</th>
             <th scope="col">Valutazione</th>
-            <!--<th scope="col">Actions</th>-->
+            <!--<th scope="col">Azioni</th>-->
           </tr>
         </thead>
         <tbody>
+          @if(movies.length === 0) {
+            <tr>
+              <td colspan="9">Nessun film trovato</td>
+            </tr>
+          }
+          @else{
           <ng-container *ngFor="let movie of movies">
-            @if(movies.length === 0) {
-              <tr>
-                <td colspan="9">Nessun film trovato!</td>
-              </tr>
-            }
             <tr>
               <td><img [src]="movie.imageUrl" alt="{{ movie.title }}" class="img-thumbnail" style="width: 100px;"></td>
               <td>{{ movie.title }}</td>
@@ -37,8 +38,9 @@
                 <button class="btn btn-primary btn-sm" (click)="editMovie(movie)">Edit</button>
                 <button class="btn btn-danger btn-sm" (click)="deleteMovie(movie)">Delete</button>
               </td>-->
-            </tr>
+            </tr>    
           </ng-container>
+        }
         </tbody>
       </table>
     </div>
