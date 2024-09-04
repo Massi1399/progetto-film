@@ -7,6 +7,7 @@ import { PasswordFieldComponent } from '../../formfields/passwordfield/passwordf
 import {FormBuilder, FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, AbstractControl} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { AuthService } from '../../auth.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class LoginComponent {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -37,7 +38,7 @@ export class LoginComponent {
   onSubmit(): void {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
-      // backend logic
+      this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
     }
   }
 }

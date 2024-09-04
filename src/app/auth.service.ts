@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://your-backend-api.com'; // Replace with your backend API
+  private apiUrl = 'C:\\Users\\Massimo\\progetto-film\\backend'; // Replace with your backend API
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   public get currentUserValue(): any {
-    return false;
+    return this.currentUserSubject.value;
   }
 
   login(email: string, password: string): Observable<any> {
@@ -33,7 +33,7 @@ export class AuthService {
       }));
   }
 
-  register(name: string, surname: string, email: string, password: string, confirm: string): Observable<any> {
+  register(name: string, surname: string, email: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/registration`, { name, surname, email, password });
   }
 
@@ -44,5 +44,9 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
+  getUserRoles(): string[] {
+    const currentUser = this.currentUserValue;
+    return ['editor'];//currentUser ? currentUser.roles : [];
+  }
 
 }

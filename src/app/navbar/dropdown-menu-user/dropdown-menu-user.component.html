@@ -4,27 +4,27 @@
     </button>
   </div>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="redirectToProfile()">
       <mat-icon>person_edit</mat-icon>
       <span>Il mio profilo</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="redirectToReviwes()">
         <mat-icon>wysiwyg</mat-icon>
         <span>Le mie recensioni</span>
       </button>
     @if(isEditor){
-        <button mat-menu-item>
+        <button mat-menu-item (click)="redirectToEditorPanel()">
             <mat-icon>settings</mat-icon>
             <span>Sezione Editor</span>
           </button> 
     }
     @if(isAdmin){
-        <button mat-menu-item>
+        <button mat-menu-item (click)="redirectToAdminPanel()">
             <mat-icon>admin_panel_settings</mat-icon>
             <span>Sezione Admin</span>
           </button> 
     }
-    <button mat-menu-item>
+    <button mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Esci</span>
     </button>

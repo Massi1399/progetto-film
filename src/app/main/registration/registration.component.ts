@@ -7,6 +7,7 @@ import { PasswordFieldComponent } from '../../formfields/passwordfield/passwordf
 import {FormBuilder, FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, AbstractControl} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
+import { AuthService } from '../../auth.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class RegistrationComponent {
 
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registrationForm = this.fb.group({
       name: ['', [Validators.required, this.regexValidator(/^[a-zA-Z]+$/) ]],
       surname: ['', [Validators.required, this.regexValidator(/^[a-zA-Z]+$/) ]],
@@ -63,7 +64,7 @@ export class RegistrationComponent {
   onSubmit(): void {
     if (this.registrationForm.valid) {
       console.log(this.registrationForm.value);
-      // backend logic
+      this.authService.register(this.registrationForm.value.name, this.registrationForm.value.surname, this.registrationForm.value.email, this.registrationForm.value.password);
     }
   }
 }
