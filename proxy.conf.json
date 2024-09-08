@@ -1,0 +1,8 @@
+{
+  "/backend": {
+	"target": "http://localhost:80/progetto_film",
+	"secure": false,
+	"changeOrigin": true,
+	"logLevel": "debug"
+  }
+}

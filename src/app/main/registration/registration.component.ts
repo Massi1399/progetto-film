@@ -9,6 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { AuthService } from '../../auth.service';
 import { error } from 'node:console';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class RegistrationComponent {
 
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registrationForm = this.fb.group({
       name: ['', [Validators.required, this.regexValidator(/^[a-zA-Z]+$/) ]],
       surname: ['', [Validators.required, this.regexValidator(/^[a-zA-Z]+$/) ]],
@@ -73,10 +74,11 @@ export class RegistrationComponent {
       ).subscribe({
         next: (response) => {
           console.log('User registered', response);
+          this.router.navigate(['/myProfile']);
 
         },
         error: (error) => {
-          console.error('Error registering user: ', error);
+          console.error('Error during registration: ', error);
       }
         
       });  
