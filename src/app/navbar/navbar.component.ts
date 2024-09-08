@@ -12,7 +12,7 @@ import { SearchbarComponent } from "../searchbar/searchbar.component";
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
-  isLogged = true; // Variable to check if the user is logged in
+  isLogged = false; // Variable to check if the user is logged in
   isHomepage: boolean = true; // Variable to check if the current page is the homepage
  
   constructor(private router: Router) {}

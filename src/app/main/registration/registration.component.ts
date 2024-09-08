@@ -8,6 +8,7 @@ import {FormBuilder, FormControl, Validators, FormsModule, ReactiveFormsModule, 
 import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { AuthService } from '../../auth.service';
+import { error } from 'node:console';
 
 
 @Component({
@@ -64,7 +65,21 @@ export class RegistrationComponent {
   onSubmit(): void {
     if (this.registrationForm.valid) {
       console.log(this.registrationForm.value);
-      this.authService.register(this.registrationForm.value.name, this.registrationForm.value.surname, this.registrationForm.value.email, this.registrationForm.value.password);
+      this.authService.register(this.registrationForm.value.name,
+                                this.registrationForm.value.surname,
+                                this.registrationForm.value.email,
+                                this.registrationForm.value.password,
+                                this.registrationForm.value.confirmPassword
+      ).subscribe({
+        next: (response) => {
+          console.log('User registered', response);
+
+        },
+        error: (error) => {
+          console.error('Error registering user: ', error);
+      }
+        
+      });  
     }
   }
 }
