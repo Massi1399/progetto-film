@@ -74,11 +74,13 @@ export class RegistrationComponent {
       ).subscribe({
         next: (response) => {
           console.log('User registered', response);
+          alert('Registrazione avvenuta con successo!');
           this.router.navigate(['/myProfile']);
 
         },
         error: (error) => {
           console.error('Error during registration: ', error);
+          alert('Registrazione fallita!');
       }
         
       });  

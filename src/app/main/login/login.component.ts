@@ -8,7 +8,7 @@ import {FormBuilder, FormControl, Validators, FormsModule, ReactiveFormsModule, 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AuthService } from '../../auth.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-component',
@@ -17,7 +17,6 @@ import { AuthService } from '../../auth.service';
   standalone: true,
   imports: [NameFieldComponent, SurnameFieldComponent, EmailFieldComponent, PasswordFieldComponent, ConfirmfieldComponent, FormsModule,
     MatFormFieldModule, ReactiveFormsModule, MatInputModule,],
-  //providers: [{provide: MatFormFieldControl, useExisting: RegistrationComponent}],
 })
 
 export class LoginComponent {
@@ -28,7 +27,7 @@ export class LoginComponent {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -36,9 +35,15 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    if (this.loginForm.valid) {
+    if(this.loginForm.valid) {
       console.log(this.loginForm.value);
-      this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
+      this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((response) => {
+        if (response.message === 'Login successful.') {
+          this.router.navigate(['/myProfile']);  // Reindirizza dopo il login
+        } else {
+          alert('Login fallito!');
+        }
+      });
     }
   }
 }

@@ -4,10 +4,11 @@ header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json; charset=UTF-8");
 
-/* Import the JWT class
+//Import the JWT class
 require_once 'path/to/firebase-jwt-library/src/JWT.php';
 use Firebase\JWT\JWT;
-*/
+use Firebase\JWT\Key;
+
 
 // Read the POST data from the Angular request
 $data = json_decode(file_get_contents("php://input"));
@@ -25,9 +26,9 @@ if (isset($data->name) && isset($data->surname) && isset($data->email) && isset(
         exit();
     }
 
-    $name = filter_var(trim($data->name), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\s]+$/")));
-    $surname = filter_var(trim($data->surname), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\s]+$/")));
-    $email = filter_var(trim($data->email), FILTER_VALIDATE_EMAIL);
+    $name = filter_var(htmlspecialchars(trim($data->name)), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\s]+$/")));
+    $surname = filter_var(htmlspecialchars(trim($data->surname)), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\s]+$/")));
+    $email = filter_var(htmlspecialchars(trim($data->email)), FILTER_VALIDATE_EMAIL);
     $password = filter_var($data->password, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^.{8,}$/")));
 
     if (!$name || !$surname || !$email || !$password) {
@@ -74,6 +75,9 @@ if (isset($data->name) && isset($data->surname) && isset($data->email) && isset(
           'email' => $email
         ]
     ];
+    session_start();
+    $_SESSION['user'] = $response['user'];
+    $_SESSION['logged_in'] = true;
     echo json_encode($response);
     
     /* Create JWT token
@@ -82,9 +86,9 @@ if (isset($data->name) && isset($data->surname) && isset($data->email) && isset(
         "surname" => $surname,
         "email" => $email,
         "role" => "user",
-    );
+    );*/
     $jwt = JWT::encode($payload, $sKey);
-    echo json_encode(["token" => $jwt]);*/
+    echo json_encode(["token" => $jwt]);
 } else {
     http_response_code(400);
     echo json_encode(["message" => "Invalid input"]);

@@ -3,6 +3,7 @@ import { DropdownMenuUserComponent } from "./dropdown-menu-user/dropdown-menu-us
 import { DropdownMenuCatalogComponent } from "./dropdown-menu-catalog/dropdown-menu-catalog.component";
 import { Router, NavigationEnd } from '@angular/router';
 import { SearchbarComponent } from "../searchbar/searchbar.component";
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,7 @@ export class NavbarComponent implements OnInit {
   isLogged = false; // Variable to check if the user is logged in
   isHomepage: boolean = true; // Variable to check if the current page is the homepage
  
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
     this.router.events.subscribe((event) => {

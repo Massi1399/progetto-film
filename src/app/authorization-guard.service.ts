@@ -9,15 +9,15 @@ export const authorizationGuard: CanActivateFn = (route) => {
   const errorDialogService = inject(ErrorDialogService);
 
   const requiredRoles = route.data?.['roles'];
-  const userRoles = authService.getUserRoles();
+  /*const userRoles = authService.getUserRoles();
 
   const hasAccess = requiredRoles ? requiredRoles.some((role: string) => userRoles.includes(role)) : true;
 
   if (!hasAccess) {
     errorDialogService.openDialog('Non sei autorizzato ad accedere a questa pagina!');
-    router.navigate(['/registration']);
+    router.navigate(['/login']);
     return false;
   }
-
-  return true;
+*/
+  return false;
 };
