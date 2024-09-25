@@ -7,7 +7,7 @@ import { ProfileComponent } from './private/profile/profile.component';
 import { ReviewsComponent } from './private/reviews/reviews.component';
 import { EditorAreaComponent } from './private/editor-area/editor-area.component';
 import { AdminAreaComponent } from './private/admin-area/admin-area.component';
-import { authorizationGuard } from './authorization-guard.service';
+import { authorizationGuard } from './services/authorization-guard.service';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},

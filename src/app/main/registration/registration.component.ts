@@ -7,7 +7,7 @@ import { PasswordFieldComponent } from '../../formfields/passwordfield/passwordf
 import {FormBuilder, FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, AbstractControl} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../services/auth.service';
 import { error } from 'node:console';
 import { Router } from '@angular/router';
 

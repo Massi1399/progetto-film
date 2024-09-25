@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { RetrievemoviesService } from '../retrievemovies.service';
+import { RetrievemoviesService } from '../services/retrievemovies.service';
 import { FormControl , ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { NgFor, CommonModule } from '@angular/common';

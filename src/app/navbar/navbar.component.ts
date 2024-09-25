@@ -3,7 +3,7 @@ import { DropdownMenuUserComponent } from "./dropdown-menu-user/dropdown-menu-us
 import { DropdownMenuCatalogComponent } from "./dropdown-menu-catalog/dropdown-menu-catalog.component";
 import { Router, NavigationEnd } from '@angular/router';
 import { SearchbarComponent } from "../searchbar/searchbar.component";
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',

@@ -7,7 +7,7 @@ import { PasswordFieldComponent } from '../../formfields/passwordfield/passwordf
 import {FormBuilder, FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, AbstractControl} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -37,7 +37,9 @@ export class LoginComponent {
   onSubmit(): void {
     if(this.loginForm.valid) {
       console.log(this.loginForm.value);
-      this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((response) => {
+      this.authService.login(this.loginForm.value.email,
+                             this.loginForm.value.password
+        ).subscribe((response) => {
         if (response.message === 'Login successful.') {
           this.router.navigate(['/myProfile']);  // Reindirizza dopo il login
         } else {
