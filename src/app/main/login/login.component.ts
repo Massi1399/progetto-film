@@ -39,13 +39,19 @@ export class LoginComponent {
       console.log(this.loginForm.value);
       this.authService.login(this.loginForm.value.email,
                              this.loginForm.value.password
-        ).subscribe((response) => {
-        if (response.message === 'Login successful.') {
-          this.router.navigate(['/myProfile']);  // Reindirizza dopo il login
-        } else {
-          alert('Login fallito!');
+        ).subscribe({
+          next: (response) => {
+            console.log('User logged', response);
+            alert('Login avvenuto con successo!');
+            this.router.navigate(['/myProfile']);
+  
+          },
+          error: (error) => {
+            console.error('Error during login: ', error);
+            alert('Login fallito!');
         }
-      });
+          
+        });  
     }
   }
 }

@@ -75,7 +75,7 @@ export class RegistrationComponent {
         next: (response) => {
           console.log('User registered', response);
           alert('Registrazione avvenuta con successo!');
-          this.router.navigate(['/myProfile']);
+          this.router.navigate(['/login']);
 
         },
         error: (error) => {
