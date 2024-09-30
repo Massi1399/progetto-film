@@ -4,11 +4,10 @@ import {SurnameFieldComponent} from '../../formfields/surnamefield/surnamefield.
 import { EmailFieldComponent } from '../../formfields/emailfield/emailfield.component';
 import {ConfirmfieldComponent} from '../../formfields/confirmfield/confirmfield.component';
 import { PasswordFieldComponent } from '../../formfields/passwordfield/passwordfield.component';
-import {FormBuilder, FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, AbstractControl} from '@angular/forms';
+import {FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormGroup, AbstractControl} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { AuthService } from '../../services/auth.service';
-import { error } from 'node:console';
 import { Router } from '@angular/router';
 
 
@@ -73,14 +72,17 @@ export class RegistrationComponent {
                                 this.registrationForm.value.confirmPassword
       ).subscribe({
         next: (response) => {
-          console.log('User registered', response);
+          //console.log('User registered', response);
           alert('Registrazione avvenuta con successo!');
           this.router.navigate(['/login']);
 
         },
         error: (error) => {
-          console.error('Error during registration: ', error);
-          alert('Registrazione fallita!');
+          //console.error('Error during registration: ', error);
+          if(error.status == 401)
+            alert('Registrazione fallita, ricontrolla i dati inseriti!');
+          else alert('Registrazione fallita, errore interno!');
+
       }
         
       });  

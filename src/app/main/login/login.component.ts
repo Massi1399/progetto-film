@@ -41,14 +41,16 @@ export class LoginComponent {
                              this.loginForm.value.password
         ).subscribe({
           next: (response) => {
-            console.log('User logged', response);
+            //console.log('User logged', response);
             alert('Login avvenuto con successo!');
             this.router.navigate(['/myProfile']);
   
           },
           error: (error) => {
-            console.error('Error during login: ', error);
-            alert('Login fallito!');
+            //console.error('Error during login: ', error);
+            if(error.status == 422 || error.status == 401)
+               alert('Login fallito, email o password errati!');
+            else alert('Login fallito, errore interno!');
         }
           
         });  

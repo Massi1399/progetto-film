@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimationsAsync(),
     provideAnimations(),
-    provideHttpClient(),
+    provideHttpClient(), provideAnimationsAsync(),
     
   ]
 };
